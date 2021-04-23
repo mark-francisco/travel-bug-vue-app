@@ -2,15 +2,15 @@
   <div class="signup">
     <!-- on submit, prevent the browser from refreshing the page. instead, run the custom submit() method defined below. -->
     <form v-on:submit.prevent="submit()">
-      <h1>Signup</h1>
+      <h1>Sign Up!</h1>
       <ul>
         <li class="error-messages" v-for="error in errors" v-bind:key="error">
           {{ error }}
         </li>
       </ul>
       <div class="form-group">
-        <label>First Name:</label>
-        <input type="text" v-model="firstName" />
+        <label for="first-name">First Name:</label>
+        <input id="first-name" type="text" v-model="firstName" />
       </div>
       <div class="form-group">
         <label>Last Name:</label>

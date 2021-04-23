@@ -1,6 +1,6 @@
 <template>
   <div class="home">
-    <h1 id="message">{{ message }}</h1>
+    <h1>{{ message }}</h1>
     <router-link to="/signup">
       <button>SIGN UP</button>
     </router-link>
@@ -10,8 +10,8 @@
   </div>
 </template>
 
-<style>
-#message {
+<style scoped>
+h1 {
   font-size: 70px;
 }
 button {

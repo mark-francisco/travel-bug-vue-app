@@ -7,6 +7,7 @@ import Signup from "../views/Signup.vue";
 import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import TripsIndex from "../views/TripsIndex.vue";
+import TripsNew from "../views/TripsNew.vue";
 
 Vue.use(VueRouter);
 
@@ -44,6 +45,11 @@ const routes = [
     path: "/trips",
     name: "Trips Index",
     component: TripsIndex,
+  },
+  {
+    path: "/trips/new",
+    name: "Trips New",
+    component: TripsNew,
   },
 ];
 

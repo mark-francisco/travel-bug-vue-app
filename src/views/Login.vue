@@ -9,7 +9,7 @@
       </ul>
       <div class="form-group">
         <label for="email">Email:</label>
-        <input id="email" type="email" v-model="email" />
+        <input id="email" type="email" v-model="email" autofocus />
       </div>
       <div class="form-group">
         <label for="password">Password:</label>

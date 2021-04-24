@@ -10,7 +10,7 @@
       </ul>
       <div class="form-group">
         <label for="first-name">First Name:</label>
-        <input id="first-name" type="text" v-model="firstName" />
+        <input id="first-name" type="text" v-model="firstName" autofocus />
       </div>
       <div class="form-group">
         <label>Last Name:</label>

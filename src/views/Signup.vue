@@ -37,7 +37,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .error-messages {
   color: red;
 }
@@ -78,6 +78,7 @@ export default {
           this.$router.push("/login");
         })
         .catch((err) => {
+          // the Users create controller action can generate an array of multiple errors, which is why we return .errors, then display each array item
           this.errors = err.response.data.errors;
         });
     },

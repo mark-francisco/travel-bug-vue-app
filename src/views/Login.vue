@@ -20,7 +20,7 @@
   </div>
 </template>
 
-<style>
+<style scoped>
 .error-messages {
   color: red;
 }
@@ -59,10 +59,11 @@ export default {
           this.$router.push("/trips");
         })
         .catch((err) => {
-          // console.log(err.response);
-          // in the back-end, the User create action's error handling already generates an array.
-          // however, the Sessions create action's error handling just generates a single string, which is why we must convert it into an array to be parsed here.
-          this.errors = [err.response.data.message];
+          // the Sessions create controller action only generates a single error with the key of "message", which is why we only need to return .data
+          console.log(err.response.data);
+          this.errors = err.response.data;
+          this.email = "";
+          this.password = "";
         });
     },
   },

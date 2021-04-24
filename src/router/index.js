@@ -8,6 +8,7 @@ import Login from "../views/Login.vue";
 import Logout from "../views/Logout.vue";
 import TripsIndex from "../views/TripsIndex.vue";
 import TripsNew from "../views/TripsNew.vue";
+import TripsShow from "../views/TripsShow.vue";
 
 Vue.use(VueRouter);
 
@@ -50,6 +51,11 @@ const routes = [
     path: "/trips/new",
     name: "Trips New",
     component: TripsNew,
+  },
+  {
+    path: "/trips/:id",
+    name: "Trips Show",
+    component: TripsShow,
   },
 ];
 

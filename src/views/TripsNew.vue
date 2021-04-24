@@ -51,8 +51,9 @@ export default {
       };
       axios
         .post("/api/trips/", params)
-        .then(() => {
-          this.$router.push("/trips");
+        .then((res) => {
+          // re-direct to Trip Show page
+          this.$router.push(`/trips/${res.data.id}`);
         })
         .catch((err) => {
           // console.log(err.response.data);

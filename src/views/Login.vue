@@ -48,7 +48,7 @@ export default {
         .then((res) => {
           // WE SET A JWT IN 2 PLACES: axios request headers & localStorage
 
-          // make it so that any future axios request headers on this session include the "jwt". axios headers can be accessed by axios requests (think an equivalent to an Insomnia header).
+          // make it so that all future axios requests on this session will include the "jwt" in the header. axios headers are accessed by axios requests (think an equivalent to an Insomnia header).
           // set axios request header: "Authorization" = "Bearer _[your-jwt]_"
           axios.defaults.headers.common["Authorization"] = "Bearer " + res.data.jwt;
           // the "jwt" is what gets returned as part of this request, whether made through Insomnia, axios, or otherwise.

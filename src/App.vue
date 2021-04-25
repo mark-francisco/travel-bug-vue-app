@@ -4,14 +4,22 @@
       <router-link to="/">Home</router-link>
       |
       <router-link to="/about">About</router-link>
-      |
-      <router-link to="/trips">My Trips</router-link>
-      |
-      <router-link to="/signup">Sign Up</router-link>
-      |
-      <router-link to="/login">Log In</router-link>
-      |
-      <router-link to="/logout">Log Out</router-link>
+      <span v-if="isLoggedIn()">
+        |
+        <router-link to="/trips">My Trips</router-link>
+      </span>
+      <span v-if="!isLoggedIn()">
+        |
+        <router-link to="/signup">Sign Up</router-link>
+      </span>
+      <span v-if="!isLoggedIn()">
+        |
+        <router-link to="/login">Log In</router-link>
+      </span>
+      <span v-if="isLoggedIn()">
+        |
+        <router-link to="/logout">Log Out</router-link>
+      </span>
     </div>
     <router-view />
   </div>
@@ -39,3 +47,14 @@
   color: #42b983;
 }
 </style>
+
+<script>
+export default {
+  methods: {
+    isLoggedIn: function () {
+      // "jwt" is set in localStorage in Login.vue component.
+      return localStorage.getItem("jwt");
+    },
+  },
+};
+</script>

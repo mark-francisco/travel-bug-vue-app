@@ -19,20 +19,34 @@
         <label for="title">Title:</label>
         <input type="text" id="title" v-model="tripToEdit.title" />
       </div>
-      <div class="form-group">Description: {{ tripToEdit.description }}</div>
-      <div class="form-group">Completed?: {{ tripToEdit.isComplete }}</div>
       <div class="form-group">
-        Logistics:
-        <li v-for="logistic in tripToEdit.logistics" v-bind:key="logistic.id">
-          {{ logistic }}
-        </li>
+        <label for="description">Description:</label>
+        <input type="text" id="description" v-model="tripToEdit.description" />
       </div>
       <div class="form-group">
-        Ideas:
-        <li v-for="idea in tripToEdit.ideas" v-bind:key="idea.id">
-          {{ idea }}
-        </li>
+        <label for="isComplete">Completed?:</label>
+        <input type="checkbox" id="isComplete" v-model="tripToEdit.isComplete" true-value="true" false-value="false" />
       </div>
+      <div class="form-group">
+        <label>Logistics:</label>
+
+        <div v-for="(logistic, index) in tripToEdit.logistics" v-bind:key="logistic.id">
+          <input type="text" v-model="tripToEdit.logistics[index]" />
+          <input type="button" value="X" />
+        </div>
+        <input type="button" v-on:click="addToLogistics()" value="Add another" />
+      </div>
+      <div class="form-group">
+        <label>Ideas:</label>
+
+        <div v-for="(idea, index) in tripToEdit.ideas" v-bind:key="idea.id">
+          <input type="text" v-model="tripToEdit.ideas[index]" />
+          <input type="button" value="X" />
+        </div>
+        <input type="button" v-on:click="addToIdeas()" value="Add another" />
+      </div>
+      <br />
+      <br />
       <input type="submit" value="Save Changes" />
     </form>
   </div>
@@ -58,6 +72,14 @@ export default {
     this.showTrip();
   },
   methods: {
+    addToLogistics: function () {
+      this.tripToEdit.logistics = this.tripToEdit.logistics || [];
+      this.tripToEdit.logistics.push("");
+    },
+    addToIdeas: function () {
+      this.tripToEdit.ideas = this.tripToEdit.ideas || [];
+      this.tripToEdit.ideas.push("");
+    },
     showTrip: function () {
       axios
         .get(`/api/trips/${this.$route.params.id}`)
@@ -69,13 +91,34 @@ export default {
           // console.log(err.response);
         });
     },
-    updateTrip: function () {
-      // let params = {
-
-      // };
-      // axios.patch().then().catch();
-      console.log(`edited trip "${this.tripToEdit.title}"!`);
-      this.$router.push(`/trips/${this.tripToEdit.id}`);
+    updateTrip: function (trip) {
+      let params = {
+        title: this.tripToEdit.title,
+        description: this.tripToEdit.description,
+        isComplete: this.tripToEdit.isComplete,
+        logistics:
+          this.tripToEdit.logistics !== null
+            ? this.tripToEdit.logistics.filter((logistic) => {
+                return logistic !== "";
+              })
+            : [],
+        ideas:
+          this.tripToEdit.ideas !== null
+            ? this.tripToEdit.ideas.filter((idea) => {
+                return idea !== "";
+              })
+            : [],
+      };
+      axios
+        .patch(`/api/trips/${trip.id}`, params)
+        .then(() => {
+          // console.log(res.data);
+          this.$router.push(`/trips/${this.tripToEdit.id}`);
+        })
+        .catch((err) => {
+          // console.log(err.response);
+          this.errors = err.response.data.errors;
+        });
     },
   },
 };

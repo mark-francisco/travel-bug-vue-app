@@ -32,7 +32,7 @@
 
         <div v-for="(logistic, index) in tripToEdit.logistics" v-bind:key="logistic.id">
           <input type="text" v-model="tripToEdit.logistics[index]" />
-          <input type="button" value="X" />
+          <input type="button" v-on:click="removeFromLogistics(index)" value="X" />
         </div>
         <input type="button" v-on:click="addToLogistics()" value="Add another" />
       </div>
@@ -41,7 +41,7 @@
 
         <div v-for="(idea, index) in tripToEdit.ideas" v-bind:key="idea.id">
           <input type="text" v-model="tripToEdit.ideas[index]" />
-          <input type="button" value="X" />
+          <input type="button" v-on:click="removeFromIdeas(index)" value="X" />
         </div>
         <input type="button" v-on:click="addToIdeas()" value="Add another" />
       </div>
@@ -76,9 +76,15 @@ export default {
       this.tripToEdit.logistics = this.tripToEdit.logistics || [];
       this.tripToEdit.logistics.push("");
     },
+    removeFromLogistics: function (index) {
+      this.tripToEdit.logistics.splice(index, 1);
+    },
     addToIdeas: function () {
       this.tripToEdit.ideas = this.tripToEdit.ideas || [];
       this.tripToEdit.ideas.push("");
+    },
+    removeFromIdeas: function (index) {
+      this.tripToEdit.ideas.splice(index, 1);
     },
     showTrip: function () {
       axios

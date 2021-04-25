@@ -1,34 +1,72 @@
 <template>
   <div class="trips-show">
+    <ul>
+      <li class="error-messages" v-for="error in errors" v-bind:key="error">
+        {{ error }}
+      </li>
+    </ul>
     <h2>Trip Details:</h2>
-    <div class="current-trip">
+    <router-link to="/trips"><button>Back to All Trips</button></router-link>
+    <div class="current-trip" v-if="currentTrip">
+      <router-link v-bind:to="`/trips/${this.$route.params.id}/edit`"><button>Edit this Trip:</button></router-link>
+      <br />
+      <br />
+      <button>Add Collaborator:</button>
+      <button>Remove Collaborator:</button>
       <p>ID: {{ currentTrip.id }}</p>
       <p>Title: {{ currentTrip.title }}</p>
-      <p>Owner ID: {{ currentTrip.owner_id }}</p>
-      <p>Collaborator ID: {{ currentTrip.collaborator_id }}</p>
+      <p>
+        Trip Owner: {{ currentTrip.owner.first_name }} {{ currentTrip.owner.last_name }} -
+        <em>"{{ currentTrip.owner.username }}"</em>
+      </p>
+      <p v-if="currentTrip.collaborator !== null">
+        Trip Collaborator: {{ currentTrip.collaborator.first_name }} {{ currentTrip.collaborator.last_name }} -
+        <em>"{{ currentTrip.collaborator.username }}"</em>
+      </p>
       <p>Description: {{ currentTrip.description }}</p>
       <p>Completed?: {{ currentTrip.isComplete }}</p>
-      <p>Logistics: {{ currentTrip.logistics }}</p>
-      <p>Ideas: {{ currentTrip.ideas }}</p>
+      <p>Logistics:</p>
+      <li v-for="logistic in currentTrip.logistics" v-bind:key="logistic.id">
+        {{ logistic }}
+      </li>
+      <p>Ideas:</p>
+      <li v-for="idea in currentTrip.ideas" v-bind:key="idea.id">
+        {{ idea }}
+      </li>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+.error-messages {
+  color: red;
+}
+</style>
+
 <script>
 import axios from "axios";
 
 export default {
   data: function () {
     return {
-      currentTrip: "",
+      currentTrip: null,
       errors: [],
     };
   },
-
+  created: function () {
+    this.showTrip();
+  },
   methods: {
     showTrip: function () {
-      console.log("this is your trip.");
+      axios
+        .get(`/api/trips/${this.$route.params.id}`)
+        .then((res) => {
+          this.currentTrip = res.data;
+        })
+        .catch(() => {
+          this.errors = ["Unable to get this Trip"];
+          // console.log(err.response);
+        });
     },
   },
 };

@@ -41,8 +41,9 @@
         {{ idea }}
       </li>
       <ul>
-        <!-- use router-link -->
-        <input type="button" value="Add Stop" />
+        <router-link to="/stops/new">
+          <input type="button" value="Add Stop" />
+        </router-link>
         <p>Stops:</p>
 
         <li v-for="stop in currentTrip.stops" v-bind:key="stop.id">

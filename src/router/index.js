@@ -10,6 +10,7 @@ import TripsIndex from "../views/TripsIndex.vue";
 import TripsNew from "../views/TripsNew.vue";
 import TripsShow from "../views/TripsShow.vue";
 import TripsEdit from "../views/TripsEdit.vue";
+import StopsNew from "../views/StopsNew.vue";
 
 Vue.use(VueRouter);
 
@@ -62,6 +63,11 @@ const routes = [
     path: "/trips/:id/edit",
     name: "Trips Edit",
     component: TripsEdit,
+  },
+  {
+    path: "/stops/new",
+    name: "Stops New",
+    component: StopsNew,
   },
 ];
 

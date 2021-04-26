@@ -5,6 +5,7 @@
         {{ error }}
       </li>
     </ul>
+
     <form v-on:submit.prevent="createTrip()">
       <h1>Create New Trip:</h1>
       <div class="form-group">

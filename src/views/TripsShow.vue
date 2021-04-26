@@ -41,7 +41,7 @@
         {{ idea }}
       </li>
       <ul>
-        <router-link to="/stops/new">
+        <router-link v-bind:to="`/trips/${this.$route.params.id}/stops/new`">
           <input type="button" value="Add Stop" />
         </router-link>
         <p>Stops:</p>

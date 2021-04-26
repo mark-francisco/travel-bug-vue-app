@@ -65,7 +65,7 @@ const routes = [
     component: TripsEdit,
   },
   {
-    path: "/stops/new",
+    path: "/trips/:id/stops/new",
     name: "Stops New",
     component: StopsNew,
   },

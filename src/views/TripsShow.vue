@@ -32,7 +32,7 @@
         v-if="currentTrip.owner_id === currentTrip.current_user.id"
         v-bind:to="`/trips/${currentTrip.id}/users/new`"
       >
-        <button>Add/Edit Collaborator:</button>
+        <button>Edit Collaborator:</button>
       </router-link>
 
       <p>Description: {{ currentTrip.description }}</p>
@@ -45,6 +45,11 @@
       <li v-for="idea in currentTrip.ideas" v-bind:key="idea.id">
         {{ idea }}
       </li>
+
+      <h1>BIG ASS MAP GOES HERE</h1>
+      <h1>JUST IMAGINE FOR NOW</h1>
+      <h1>IT'S UNDER CONSTRUCTION</h1>
+
       <ul>
         <router-link v-bind:to="`/trips/${this.$route.params.id}/stops/new`">
           <input type="button" value="Add Stop" />

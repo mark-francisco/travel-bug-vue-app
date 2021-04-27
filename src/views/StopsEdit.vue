@@ -24,8 +24,8 @@
         <label for="end-date">End Date:</label>
         <input id="end-date" type="date" v-model="stopToEdit.end_date" />
       </div>
-      <button type="submit">Save Stop!</button>
-      <button type="button" v-on:click="deleteStop()">Delete Stop!</button>
+      <button type="submit">Save</button>
+      <button type="button" v-on:click="deleteStop()">Remove from Trip</button>
     </form>
 
     <!-- modal that shows the list of available Destinations -->

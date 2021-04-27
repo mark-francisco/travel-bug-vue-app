@@ -48,6 +48,7 @@ export default {
   data: function () {
     return {
       selectedUser: null,
+      currentUser: null,
       users: [],
       errors: [],
     };
@@ -62,8 +63,10 @@ export default {
         .then((res) => {
           // return Trip's current collaborator (User object) and set as selectedUser. If there's no current collaborator, set selectedUser to " " instead.
           this.selectedUser = res.data.collaborator || " ";
+          this.currentUser = res.data.current_user;
           // console.log(res.data.collaborator);
           // console.log(this.selectedUser);
+          // console.log(this.currentUser);
         })
         .catch(() => {
           this.errors = ["Unable to get this Trip."];
@@ -71,8 +74,11 @@ export default {
     },
     indexUsers: function () {
       axios.get("/api/users").then((res) => {
-        // populate the users array on the front-end
-        this.users = res.data;
+        // populate the users array on the front-end. we want to filter out the currently logged in User.
+        // console.log(res.data);
+        this.users = res.data.filter((eachUser) => {
+          return eachUser.id !== this.currentUser.id;
+        });
         // open up the modal on Vue template
         document.querySelector("#users-index").showModal();
       });

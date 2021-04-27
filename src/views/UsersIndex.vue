@@ -16,6 +16,15 @@
         <input id="collaborator" type="text" v-if="selectedUser" v-model="selectedUser.username" disabled />
       </div>
       <input type="button" v-on:click="indexUsers()" value="Select a User" />
+      <!-- only show the "Remove Collaborator" button if the current Trip has a collaborator -->
+      <button
+        type="button"
+        v-if="currentTrip && currentTrip.collaborator_id"
+        v-on:click="removeCollaborator(currentTrip)"
+      >
+        Remove Collaborator:
+      </button>
+      <br />
       <input type="submit" value="Save Changes!" />
     </form>
     <!-- modal that shows the list of available Users -->
@@ -50,6 +59,7 @@ export default {
       selectedUser: null,
       currentUser: null,
       users: [],
+      currentTrip: null,
       errors: [],
     };
   },
@@ -64,6 +74,7 @@ export default {
           // return Trip's current collaborator (User object) and set as selectedUser. If there's no current collaborator, set selectedUser to " " instead.
           this.selectedUser = res.data.collaborator || " ";
           this.currentUser = res.data.current_user;
+          this.currentTrip = res.data;
           // console.log(res.data.collaborator);
           // console.log(this.selectedUser);
           // console.log(this.currentUser);
@@ -95,6 +106,19 @@ export default {
         .then((res) => {
           // console.log(res);
           this.$router.push(`/trips/${res.data.id}`);
+        })
+        .catch((err) => {
+          this.errors = err.response.data.errors;
+        });
+    },
+    removeCollaborator: function (trip) {
+      let params = {
+        collaborator_id: "",
+      };
+      axios
+        .patch(`/api/trips/${trip.id}`, params)
+        .then(() => {
+          this.$router.push(`/trips/${trip.id}`);
         })
         .catch((err) => {
           this.errors = err.response.data.errors;

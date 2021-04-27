@@ -28,10 +28,13 @@
         Trip Collaborator: {{ currentTrip.collaborator.first_name }} {{ currentTrip.collaborator.last_name }} -
         <em>"{{ currentTrip.collaborator.username }}"</em>
       </p>
-      <router-link v-bind:to="`/trips/${currentTrip.id}/users/new`">
+      <router-link
+        v-if="currentTrip.owner_id === currentTrip.current_user.id"
+        v-bind:to="`/trips/${currentTrip.id}/users/new`"
+      >
         <button>Add/Edit Collaborator:</button>
       </router-link>
-      <button>Remove Collaborator:</button>
+
       <p>Description: {{ currentTrip.description }}</p>
       <p>Completed?: {{ currentTrip.isComplete }}</p>
       <p>Logistics:</p>

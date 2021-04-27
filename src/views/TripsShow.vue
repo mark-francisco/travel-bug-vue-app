@@ -8,7 +8,9 @@
     <h2>Trip Details:</h2>
     <router-link to="/trips"><button>Back to All Trips</button></router-link>
     <div class="current-trip" v-if="currentTrip">
-      <router-link v-bind:to="`/trips/${this.$route.params.id}/edit`"><button>Edit this Trip:</button></router-link>
+      <router-link v-bind:to="`/trips/${this.$route.params.id}/edit`">
+        <button>Edit this Trip:</button>
+      </router-link>
       <br />
       <br />
       <button v-if="currentTrip.owner_id === currentTrip.current_user.id" v-on:click="destroyTrip(currentTrip)">
@@ -55,9 +57,9 @@
           </p>
           <p>Start Date: {{ stop.start_date }}</p>
           <p>End Date: {{ stop.end_date }}</p>
-          <!-- use router-link -->
-          <!-- open up a modal? (SPA) -->
-          <button>Edit this Stop:</button>
+          <router-link v-bind:to="`/trips/${currentTrip.id}/stops/${stop.id}/edit`">
+            <button>Edit this Stop:</button>
+          </router-link>
           <hr />
         </li>
       </ul>

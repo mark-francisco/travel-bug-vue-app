@@ -24,7 +24,7 @@
         <label for="end-date">End Date:</label>
         <input id="end-date" type="date" v-model="endDate" />
       </div>
-      <input type="submit" value="Add Stop!" />
+      <input type="submit" value="Save Stop!" />
     </form>
 
     <!-- modal that shows the list of available Destinations -->
@@ -34,10 +34,10 @@
         <div v-for="destination in this.destinations" v-bind:key="destination.id">
           <li>
             {{ destination.name }}, {{ destination.country }}
-            <button v-on:click="this.selectedDestination = destination">Select</button>
+            <button v-on:click="setDestination(destination)">Select</button>
           </li>
         </div>
-        <input type="button" value="Close" />
+        <input type="submit" value="Close" />
       </form>
     </dialog>
   </div>
@@ -73,7 +73,7 @@ export default {
       axios
         .post("/api/stops", params)
         .then((res) => {
-          console.log(res);
+          // console.log(res);
           this.$router.push(`/trips/${res.data.trip_id}`);
         })
         .catch((err) => {
@@ -87,6 +87,9 @@ export default {
         // open up the modal on Vue template
         document.querySelector("#destinations-index").showModal();
       });
+    },
+    setDestination: function (dest) {
+      return (this.selectedDestination = dest);
     },
   },
 };

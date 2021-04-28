@@ -5,10 +5,10 @@
         {{ error }}
       </li>
     </ul>
+    <h1>Your Trips:</h1>
     <router-link to="/trips/new">
       <button>Add New Trip!</button>
     </router-link>
-    <h1>Your Trips:</h1>
     <div v-for="trip in trips" v-bind:key="trip.id">
       <p>Trip ID: {{ trip.id }}</p>
       <p>Trip Title: {{ trip.title }}</p>

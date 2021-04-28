@@ -1,29 +1,5 @@
 <template>
   <div id="app">
-    <!-- <div id="nav">
-      <span v-if="!isLoggedIn()">
-        <router-link to="/">Home</router-link>
-        |
-      </span>
-      <router-link to="/about">About</router-link>
-      <span v-if="isLoggedIn()">
-        |
-        <router-link to="/trips">My Trips</router-link>
-      </span>
-      <span v-if="!isLoggedIn()">
-        |
-        <router-link to="/signup">Sign Up</router-link>
-      </span>
-      <span v-if="!isLoggedIn()">
-        |
-        <router-link to="/login">Log In</router-link>
-      </span>
-      <span v-if="isLoggedIn()">
-        |
-        <router-link to="/logout">Log Out</router-link>
-      </span>
-    </div> -->
-
     <!-- ECOLAND NAVBAR -->
     <nav
       class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target"
@@ -43,32 +19,47 @@
           <span class="oi oi-menu"></span>
           Menu
         </button>
-
+        <div id="nav">
+          <span v-if="!isLoggedIn()">
+            <router-link to="/">Home</router-link>
+            |
+          </span>
+          <router-link to="/about">About</router-link>
+          <span v-if="isLoggedIn()">
+            |
+            <router-link to="/trips">My Trips</router-link>
+          </span>
+          <span v-if="!isLoggedIn()">
+            |
+            <router-link to="/signup">Sign Up</router-link>
+          </span>
+          <span v-if="!isLoggedIn()">
+            |
+            <router-link to="/login">Log In</router-link>
+          </span>
+          <span v-if="isLoggedIn()">
+            |
+            <router-link to="/logout">Log Out</router-link>
+          </span>
+        </div>
         <div class="collapse navbar-collapse" id="ftco-nav">
           <ul class="navbar-nav nav ml-auto">
             <li class="nav-item">
+              <a href="#contact-section" class="nav-link">
+                <span v-if="!isLoggedIn()">
+                  <!-- Home -->
+                  <router-link to="/">Home</router-link>
+                </span>
+              </a>
+            </li>
+            <li class="nav-item">
               <a href="#home-section" class="nav-link"><span>Home</span></a>
             </li>
-            <li class="nav-item">
+            <!-- <li class="nav-item">
               <a href="#services-section" class="nav-link"><span>Services</span></a>
-            </li>
+            </li> -->
             <li class="nav-item">
               <a href="#about-section" class="nav-link"><span>About</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#destination-section" class="nav-link"><span>Destination</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#hotel-section" class="nav-link"><span>Hotel</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#restaurant-section" class="nav-link"><span>Restaurant</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#blog-section" class="nav-link"><span>Blog</span></a>
-            </li>
-            <li class="nav-item">
-              <a href="#contact-section" class="nav-link"><span>Contact</span></a>
             </li>
           </ul>
         </div>

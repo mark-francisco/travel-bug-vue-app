@@ -1,5 +1,83 @@
 <template>
   <div id="trips-index">
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-5">
+          <div class="col-md-12 heading-section text-center ftco-animate">
+            <span class="subheading">Welcome, _current user_</span>
+            <h2 class="mb-4">Here is your list of Trips:</h2>
+            <p>Select a Trip to see more details and make edits:</p>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="project">
+              <div class="img">
+                <a href="destination.html">
+                  <img src="ecoland-master/images/destination-1.jpg" class="img-fluid" alt="Colorlib Template" />
+                </a>
+              </div>
+              <div class="text">
+                <h4 class="price">ID: 1</h4>
+                <span>Trip Owner + Trip Collaborator</span>
+                <h3><a href="destination.html">Trip Title</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="project">
+              <div class="img">
+                <a href="destination.html">
+                  <img src="ecoland-master/images/destination-2.jpg" class="img-fluid" alt="Colorlib Template" />
+                </a>
+              </div>
+              <div class="text">
+                <h4 class="price">ID: 2</h4>
+                <span>Trip Owner + Trip Collaborator</span>
+                <h3><a href="destination.html">Trip Title</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="project">
+              <div class="img">
+                <a href="destination.html">
+                  <img src="ecoland-master/images/destination-3.jpg" class="img-fluid" alt="Colorlib Template" />
+                </a>
+              </div>
+              <div class="text">
+                <h4 class="price">$400</h4>
+                <span>Trip Owner + Trip Collaborator</span>
+                <h3><a href="destination.html">Trip Title</a></h3>
+              </div>
+            </div>
+          </div>
+          <div class="col-md-6 col-lg-4 ftco-animate">
+            <div class="project">
+              <div class="img">
+                <a href="destination.html">
+                  <img src="ecoland-master/images/destination-4.jpg" class="img-fluid" alt="Colorlib Template" />
+                </a>
+              </div>
+              <div class="text">
+                <h4 class="price">$400</h4>
+                <span>Trip Owner + Trip Collaborator</span>
+                <h3><a href="destination.html">Trip Title</a></h3>
+              </div>
+              <a
+                href="images/destination-4.jpg"
+                class="icon image-popup d-flex justify-content-center align-items-center"
+              >
+                <span class="icon-expand"></span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- /////////////////////////////////// -->
+
     <ul>
       <li class="error-messages" v-for="error in errors" v-bind:key="error">
         {{ error }}

@@ -136,12 +136,45 @@
 a #travel-bug-brand {
   color: black;
 }
+a #travel-bug-brand:hover {
+  color: #e2c0bb !important;
+}
+
+.btn.btn-primary {
+  background: #e2c0bb;
+  border: 1px solid #e2c0bb !important;
+  color: #fff !important;
+}
+.btn.btn-primary:hover {
+  background: #fff !important;
+  color: #e2c0bb !important;
+}
+
+.btn.btn-white {
+  background: #fff !important;
+  border: 1px solid #fff !important;
+  color: #000000 !important;
+}
+.btn.btn-white:hover {
+  background: #000 !important;
+  color: #fff !important;
+}
+
+.btn.btn-black {
+  background: #000000 !important;
+  border: 1px solid #000000 !important;
+  color: #fff !important;
+}
+.btn.btn-black:hover {
+  background: #fff !important;
+  color: #000000 !important;
+}
 
 .bg-light {
+  background: #fff !important;
   /* background: #ede4e3 !important; */
   /* background: #ede7dc !important; */
   /* background: #bdc3cb !important; */
-  background: #fff !important;
   /* background: #f2d0c1 !important; */
   /* background: #e0e2e9 !important; */
 }

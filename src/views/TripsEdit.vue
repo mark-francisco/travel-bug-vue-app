@@ -6,6 +6,32 @@
       </li>
     </ul>
 
+    <div class="col-md-12 tour-wrap">
+      <div class="pt-5 mt-5">
+        <div class="comment-form-wrap pt-5">
+          <h3 class="mb-5">Leave a comment</h3>
+          <form action="#" class="p-5 bg-light">
+            <div class="form-group">
+              <label for="name">Name *</label>
+              <input type="text" class="form-control" id="name" />
+            </div>
+            <div class="form-group">
+              <label for="website">Website</label>
+              <input type="url" class="form-control" id="website" />
+            </div>
+
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea name="" id="message" cols="30" rows="5" class="form-control"></textarea>
+            </div>
+            <div class="form-group">
+              <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary" />
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
     <h2>Edit this Trip:</h2>
     <router-link v-bind:to="`/trips/${this.$route.params.id}`">
       <button>Back to Trip page:</button>

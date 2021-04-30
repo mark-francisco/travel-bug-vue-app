@@ -12,7 +12,7 @@
           <h2 class="mb-4">Adding a new Trip?</h2>
           <p>
             <router-link to="/trips/new">
-              <button class="btn btn-secondary">Add New Trip!</button>
+              <button class="btn btn-primary px-3 py-2">Add New Trip!</button>
             </router-link>
           </p>
         </div>
@@ -22,8 +22,8 @@
         <div class="row justify-content-center pb-5">
           <div class="col-md-12 heading-section text-center">
             <span class="subheading">Trips</span>
-            <h2 class="mb-4">Below is your current library:</h2>
-            <p>Select a trip to see more info and make edits:</p>
+            <h2 class="mb-4">Here is your current list of Trips:</h2>
+            <p>Select one below to see more info and make edits:</p>
           </div>
         </div>
         <div class="row">

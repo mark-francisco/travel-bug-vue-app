@@ -8,6 +8,9 @@
 
     <form v-on:submit.prevent="createTrip()">
       <h1>Create New Trip:</h1>
+      <router-link to="/trips">
+        <button>Back to All Trips</button>
+      </router-link>
       <div class="form-group">
         <label for="title">Title:</label>
         <input id="title" type="text" v-model="title" autofocus />

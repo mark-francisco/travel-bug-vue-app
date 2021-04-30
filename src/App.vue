@@ -80,7 +80,7 @@
               <h2 class="ftco-heading-2">
                 About
                 <span><a href="#">Travel Bug</a></span>
-                <p>Thank you for visiting our site. We hope to help inspire wanderlust and an urge to explore.</p>
+                <p>Thank you for visiting the site. Our hope is to help inspire wanderlust and a desire to explore.</p>
               </h2>
             </div>
           </div>

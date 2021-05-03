@@ -6,81 +6,124 @@
       </li>
     </ul>
 
-    <div class="col-md-12 tour-wrap">
-      <div class="pt-5 mt-5">
-        <div class="comment-form-wrap pt-5">
-          <h3 class="mb-5">Leave a comment</h3>
-          <form action="#" class="p-5 bg-light">
-            <div class="form-group">
-              <label for="name">Name *</label>
-              <input type="text" class="form-control" id="name" />
-            </div>
-            <div class="form-group">
-              <label for="website">Website</label>
-              <input type="url" class="form-control" id="website" />
-            </div>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
+          <div class="col-md-12 heading-section">
+            <h2 class="mb-4">Edit this Trip:</h2>
+            <router-link v-bind:to="`/trips/${this.$route.params.id}`">
+              <button class="btn btn-outline-primary py-2 px-2.5 mr-4">Back to Trip page</button>
+            </router-link>
+            <router-link to="/trips">
+              <button class="btn btn-outline-secondary py-2 px-2.5">Back to All Trips</button>
+            </router-link>
+          </div>
+        </div>
 
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea name="" id="message" cols="30" rows="5" class="form-control"></textarea>
+        <div class="row">
+          <div class="col-md-12 tour-wrap">
+            <div>
+              <div class="comment-form-wrap">
+                <form class="pt-5 bg-light trip-to-edit" v-if="tripToEdit" v-on:submit.prevent="updateTrip(tripToEdit)">
+                  <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" class="form-control" v-model="tripToEdit.title" />
+                  </div>
+                  <div class="form-group">
+                    <label for="description">Description:</label>
+                    <textarea
+                      cols="30"
+                      rows="5"
+                      id="description"
+                      class="form-control"
+                      v-model="tripToEdit.description"
+                    ></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label for="isComplete">Completed?:</label>
+                    <input
+                      type="checkbox"
+                      id="isComplete"
+                      class="mx-2"
+                      v-model="tripToEdit.isComplete"
+                      true-value="true"
+                      false-value="false"
+                    />
+                  </div>
+                  <div class="search-wrap-1 p-4">
+                    <div class="search-property-1">
+                      <div class="row">
+                        <div class="col-lg align-items-end mb-3">
+                          <div class="form-group mb-4">
+                            <label>Logistics:</label>
+                            <div
+                              class="py-2"
+                              v-for="(logistic, index) in tripToEdit.logistics"
+                              v-bind:key="logistic.id"
+                            >
+                              <input type="text" class="form-control" v-model="tripToEdit.logistics[index]" />
+                              <input
+                                type="button"
+                                class="btn btn-outline-danger mb-1 py-2"
+                                v-on:click="removeFromLogistics(index)"
+                                value="X"
+                              />
+                            </div>
+                            <input
+                              type="button"
+                              class="btn btn-primary py-2 px-4"
+                              v-on:click="addToLogistics()"
+                              value="Add another"
+                            />
+                          </div>
+                        </div>
+                        <div class="col-lg align-items-end mb-3">
+                          <div class="form-group mb-4">
+                            <label>Ideas:</label>
+                            <div class="py-2" v-for="(idea, index) in tripToEdit.ideas" v-bind:key="idea.id">
+                              <input type="text" class="form-control" v-model="tripToEdit.ideas[index]" />
+                              <input
+                                type="button"
+                                class="btn btn-outline-danger mb-1 py-2"
+                                v-on:click="removeFromIdeas(index)"
+                                value="X"
+                              />
+                            </div>
+                            <input
+                              type="button"
+                              class="btn btn-primary py-2 px-4"
+                              v-on:click="addToIdeas()"
+                              value="Add another"
+                            />
+                          </div>
+                        </div>
+                      </div>
+                      <div class="form-group mt-5">
+                        <input type="submit" class="btn btn-outline-success py-3 px-4" value="Save Changes" />
+                      </div>
+                    </div>
+                  </div>
+                </form>
+              </div>
             </div>
-            <div class="form-group">
-              <input type="submit" value="Post Comment" class="btn py-3 px-4 btn-primary" />
-            </div>
-          </form>
+          </div>
         </div>
       </div>
-    </div>
-
-    <h2>Edit this Trip:</h2>
-    <router-link v-bind:to="`/trips/${this.$route.params.id}`">
-      <button>Back to Trip page:</button>
-    </router-link>
-    <router-link to="/trips">
-      <button>Back to All Trips</button>
-    </router-link>
-
-    <form class="trip-to-edit" v-if="tripToEdit" v-on:submit.prevent="updateTrip(tripToEdit)">
-      <div class="form-group">
-        <label for="title">Title:</label>
-        <input type="text" id="title" v-model="tripToEdit.title" />
-      </div>
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <input type="text" id="description" v-model="tripToEdit.description" />
-      </div>
-      <div class="form-group">
-        <label for="isComplete">Completed?:</label>
-        <input type="checkbox" id="isComplete" v-model="tripToEdit.isComplete" true-value="true" false-value="false" />
-      </div>
-      <div class="form-group">
-        <label>Logistics:</label>
-
-        <div v-for="(logistic, index) in tripToEdit.logistics" v-bind:key="logistic.id">
-          <input type="text" v-model="tripToEdit.logistics[index]" />
-          <input type="button" v-on:click="removeFromLogistics(index)" value="X" />
-        </div>
-        <input type="button" v-on:click="addToLogistics()" value="Add another" />
-      </div>
-      <div class="form-group">
-        <label>Ideas:</label>
-
-        <div v-for="(idea, index) in tripToEdit.ideas" v-bind:key="idea.id">
-          <input type="text" v-model="tripToEdit.ideas[index]" />
-          <input type="button" v-on:click="removeFromIdeas(index)" value="X" />
-        </div>
-        <input type="button" v-on:click="addToIdeas()" value="Add another" />
-      </div>
-      <br />
-      <br />
-      <input type="submit" value="Save Changes" />
-    </form>
+    </section>
   </div>
 </template>
 
 <style scoped>
 .error-messages {
   color: red;
+}
+.search-property-1 .form-group .form-control {
+  display: inline !important;
+  width: 90%;
+  color: rgba(0, 0, 0, 1) !important;
+}
+form {
+  color: black;
 }
 </style>
 

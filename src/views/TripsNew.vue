@@ -6,31 +6,57 @@
       </li>
     </ul>
 
-    <form v-on:submit.prevent="createTrip()">
-      <h1>Create New Trip:</h1>
-      <router-link to="/trips">
-        <button>Back to All Trips</button>
-      </router-link>
-      <div class="form-group">
-        <label for="title">Title:</label>
-        <input id="title" type="text" v-model="title" autofocus />
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
+          <div class="col-md-12 heading-section">
+            <h2 class="mb-4">Create New Trip:</h2>
+            <router-link to="/trips">
+              <button class="btn btn-outline-secondary py-2 px-2.5">Back to All Trips</button>
+            </router-link>
+
+            <div class="row">
+              <div class="col-md-12 tour-wrap">
+                <form class="pt-5 bg-light trip-to-edit" v-on:submit.prevent="createTrip()">
+                  <div class="form-group">
+                    <label for="title">Title:</label>
+                    <input id="title" type="text" class="form-control" v-model="title" autofocus />
+                  </div>
+                  <div class="comment-form-wrap">
+                    <div class="form-group">
+                      <label for="description">Description:</label>
+                      <textarea
+                        id="description"
+                        class="form-control"
+                        v-model="description"
+                        cols="30"
+                        rows="4"
+                      ></textarea>
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="isComplete">Completed?:</label>
+                    <input id="isComplete" class="mx-2" type="checkbox" value="true" v-model="isComplete" />
+                  </div>
+                  <div class="form-group mt-5">
+                    <button type="submit" class="btn btn-outline-success py-3 px-4">Add Trip!</button>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="description">Description:</label>
-        <input id="description" type="text" v-model="description" />
-      </div>
-      <div class="form-group">
-        <label for="isComplete">Completed?:</label>
-        <input id="isComplete" type="checkbox" value="true" v-model="isComplete" />
-      </div>
-      <button type="submit">Add Trip!</button>
-    </form>
+    </section>
   </div>
 </template>
 
 <style scoped>
 .error-messages {
   color: red;
+}
+form {
+  color: black;
 }
 </style>
 

@@ -78,9 +78,8 @@
           <div class="col-md">
             <div class="ftco-footer-widget mb-4">
               <h2 class="ftco-heading-2">
-                About
-                <span><a href="#">Travel Bug</a></span>
-                <p>Thank you for visiting the site. Our hope is to help inspire wanderlust and a desire to explore.</p>
+                Thanks for stopping by
+                <p>Our goal is to inspire a desire to explore.</p>
               </h2>
             </div>
           </div>
@@ -91,7 +90,7 @@
                 <ul>
                   <li>
                     <span class="icon icon-map-marker"></span>
-                    <span class="text">Planet Earth</span>
+                    <span class="text">Western Hemisphere, Planet Earth</span>
                   </li>
                   <li>
                     <a href="#">

@@ -147,7 +147,7 @@
                               </button>
                             </p>
                             <p class="ml-auto mb-0">
-                              <a class="meta-chat">Stop ID: {{ stop.id }}</a>
+                              <a class="meta-chat">ID: {{ stop.id }}</a>
                             </p>
                           </div>
                         </div>

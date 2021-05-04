@@ -6,38 +6,57 @@
       </li>
     </ul>
 
-    <form v-on:submit.prevent="createStop()">
-      <h1>Add a Stop to your Trip!</h1>
-      <router-link v-bind:to="`/trips/${this.$route.params.id}`">
-        <button>Go back to Trip page</button>
-      </router-link>
-      <div id="form-group">
-        <label for="destination-id">Destination:</label>
-        <input id="destination-id" type="text" v-model="selectedDestination.name" disabled />
-      </div>
-      <input type="button" v-on:click="indexDestinations()" value="Choose a Destination" />
-      <div id="form-group">
-        <label for="start-date">Start Date:</label>
-        <input id="start-date" type="date" v-model="startDate" />
-      </div>
-      <div id="form-group">
-        <label for="end-date">End Date:</label>
-        <input id="end-date" type="date" v-model="endDate" />
-      </div>
-      <input type="submit" value="Save Stop!" />
-    </form>
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
+          <div class="col-md-12 heading-section">
+            <form class="search-property-1" v-on:submit.prevent="createStop()">
+              <h2 class="mb-2">Add a Stop to your Trip!</h2>
+              <router-link v-bind:to="`/trips/${this.$route.params.id}`">
+                <button class="btn btn-outline-primary py-2 px-2.5 mb-4">Go back to Trip page</button>
+              </router-link>
+              <div class="form-group my-3">
+                <label for="destination-id">Destination:</label>
+                <input
+                  id="destination-id"
+                  class="mx-2"
+                  type="text"
+                  size="28"
+                  v-model="selectedDestination.name"
+                  disabled
+                />
 
+                <input type="button" class="btn btn-primary" v-on:click="indexDestinations()" value="Choose Dest." />
+              </div>
+              <div class="form-group">
+                <label for="start-date">Start Date:</label>
+                <input id="start-date" class="mx-2" type="date" v-model="startDate" />
+              </div>
+              <div class="form-group">
+                <label for="end-date">End Date:</label>
+                <input id="end-date" type="date" class="mx-2" v-model="endDate" />
+              </div>
+              <div class="form-group mt-5">
+                <input type="submit" class="btn btn-outline-success py-3 px-4" value="Save Stop!" />
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
     <!-- modal that shows the list of available Destinations -->
     <dialog id="destinations-index">
       <form method="dialog">
         <h1>Destinations:</h1>
-        <div v-for="destination in this.destinations" v-bind:key="destination.id">
+        <div class="col-sm-12 day-wrap" v-for="destination in this.destinations" v-bind:key="destination.id">
           <li>
             {{ destination.name }}, {{ destination.country }}
-            <button v-on:click="setDestination(destination)">Select</button>
+            <button class="btn btn-outline-dark btn-sm float-right" v-on:click="setDestination(destination)">
+              Select
+            </button>
           </li>
         </div>
-        <input type="submit" value="Close" />
+        <input type="submit" class="btn btn-outline-secondary" value="Close" />
       </form>
     </dialog>
   </div>
@@ -46,6 +65,12 @@
 <style scoped>
 .error-messages {
   color: red;
+}
+dialog {
+  width: 50%;
+}
+.day-wrap {
+  margin-bottom: 0.6rem;
 }
 </style>
 

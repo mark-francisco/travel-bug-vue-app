@@ -6,39 +6,61 @@
       </li>
     </ul>
 
-    <form v-on:submit.prevent="updateTripCollaborator()">
-      <h1>Update Trip Collaborator!</h1>
-      <router-link v-bind:to="`/trips/${this.$route.params.id}`">
-        <button>Go back to Trip page</button>
-      </router-link>
-      <div id="form-group">
-        <label for="collaborator">User:</label>
-        <input id="collaborator" type="text" v-if="selectedUser" v-model="selectedUser.username" disabled />
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
+          <div class="col-md-12 heading-section">
+            <form class="search-property-1" v-on:submit.prevent="updateTripCollaborator()">
+              <h2 class="mb-2">Update Trip Collaborator:</h2>
+              <router-link v-bind:to="`/trips/${this.$route.params.id}`">
+                <button class="btn btn-outline-primary py-2 px-2.5 mb-4">Back to Trip page</button>
+              </router-link>
+              <div class="form-group my-3">
+                <label for="collaborator">User:</label>
+                <input
+                  id="collaborator"
+                  class="mx-2"
+                  type="text"
+                  size="28"
+                  v-if="selectedUser"
+                  v-model="selectedUser.username"
+                  disabled
+                />
+
+                <input type="button" class="btn btn-primary" v-on:click="indexUsers()" value="Select a User" />
+              </div>
+
+              <div class="form-group mt-5">
+                <!-- only show the "Remove Collaborator" button if the current Trip has a collaborator -->
+                <button
+                  type="button"
+                  class="btn btn-outline-danger py-3 px-4 float-right"
+                  v-if="currentTrip && currentTrip.collaborator_id"
+                  v-on:click="removeCollaborator(currentTrip)"
+                >
+                  Remove Collaborator:
+                </button>
+
+                <input type="submit" class="btn btn-outline-success py-3 px-4" value="Save Changes!" />
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <input type="button" v-on:click="indexUsers()" value="Select a User" />
-      <!-- only show the "Remove Collaborator" button if the current Trip has a collaborator -->
-      <button
-        type="button"
-        v-if="currentTrip && currentTrip.collaborator_id"
-        v-on:click="removeCollaborator(currentTrip)"
-      >
-        Remove Collaborator:
-      </button>
-      <br />
-      <input type="submit" value="Save Changes!" />
-    </form>
+    </section>
+
     <!-- modal that shows the list of available Users -->
     <dialog id="users-index">
       <form method="dialog">
         <h1>Users:</h1>
-        <div v-for="user in this.users" v-bind:key="user.id">
+        <div class="col-sm-12 day-wrap" v-for="user in this.users" v-bind:key="user.id">
           <li>
             {{ user.first_name }} {{ user.last_name }} -
             <em>{{ user.username }}</em>
-            <button v-on:click="setUser(user)">Select</button>
+            <button class="btn btn-outline-dark btn-sm float-right" v-on:click="setUser(user)">Select</button>
           </li>
         </div>
-        <input type="submit" value="Close" />
+        <input type="submit" class="btn btn-outline-secondary" value="Close" />
       </form>
     </dialog>
   </div>
@@ -47,6 +69,12 @@
 <style scoped>
 .error-messages {
   color: red;
+}
+dialog {
+  width: 50%;
+}
+.day-wrap {
+  margin-bottom: 0.6rem;
 }
 </style>
 
@@ -75,9 +103,6 @@ export default {
           this.selectedUser = res.data.collaborator || " ";
           this.currentUser = res.data.current_user;
           this.currentTrip = res.data;
-          // console.log(res.data.collaborator);
-          // console.log(this.selectedUser);
-          // console.log(this.currentUser);
         })
         .catch(() => {
           this.errors = ["Unable to get this Trip."];
@@ -104,7 +129,6 @@ export default {
       axios
         .patch(`/api/trips/${this.$route.params.id}`, params)
         .then((res) => {
-          // console.log(res);
           this.$router.push(`/trips/${res.data.id}`);
         })
         .catch((err) => {

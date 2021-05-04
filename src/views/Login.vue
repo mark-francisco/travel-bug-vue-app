@@ -1,28 +1,48 @@
 <template>
   <div class="login">
-    <form v-on:submit.prevent="submit()">
-      <h1>Log In!</h1>
-      <ul>
-        <li class="error-messages" v-for="error in errors" v-bind:key="error.id">
-          {{ error }}
-        </li>
-      </ul>
-      <div class="form-group">
-        <label for="email">Email:</label>
-        <input id="email" type="email" v-model="email" autofocus />
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
+          <div class="col-md-12 heading-section">
+            <h2 class="mb-4">Log In!</h2>
+            <form v-on:submit.prevent="submit()">
+              <ul>
+                <li class="error-messages" v-for="error in errors" v-bind:key="error.id">
+                  {{ error }}
+                </li>
+              </ul>
+              <div class="row">
+                <div class="col-md-12 tour-wrap">
+                  <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input id="email" type="email" class="form-control" v-model="email" autofocus />
+                  </div>
+                  <div class="form-group">
+                    <label for="password">Password:</label>
+                    <input id="password" type="password" class="form-control" v-model="password" />
+                  </div>
+                  <div class="form-group mt-5">
+                    <input type="submit" class="btn btn-outline-success py-3 px-4" value="Log In!" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label for="password">Password:</label>
-        <input id="password" type="password" v-model="password" />
-      </div>
-      <input type="submit" value="Log In!" />
-    </form>
+    </section>
   </div>
 </template>
 
 <style scoped>
 .error-messages {
   color: red;
+}
+form {
+  color: black;
+}
+.form-control {
+  width: 50%;
 }
 </style>
 

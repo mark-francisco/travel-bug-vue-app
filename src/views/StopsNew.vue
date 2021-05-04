@@ -37,7 +37,7 @@
                 <input id="end-date" type="date" class="mx-2" v-model="endDate" />
               </div>
               <div class="form-group mt-5">
-                <input type="submit" class="btn btn-outline-success py-3 px-4" value="Save Stop!" />
+                <input type="submit" class="btn btn-outline-success py-3 px-4" value="Save Stop" />
               </div>
             </form>
           </div>

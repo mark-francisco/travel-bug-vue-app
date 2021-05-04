@@ -1,45 +1,65 @@
 <template>
   <div class="signup">
-    <!-- on submit, prevent the browser from refreshing the page. instead, run the custom submit() method defined below. -->
-    <form v-on:submit.prevent="submit()">
-      <h1>Sign Up!</h1>
-      <ul>
-        <li class="error-messages" v-for="error in errors" v-bind:key="error">
-          {{ error }}
-        </li>
-      </ul>
-      <div class="form-group">
-        <label for="first-name">First Name:</label>
-        <input id="first-name" type="text" v-model="firstName" autofocus />
+    <section class="ftco-section">
+      <div class="container">
+        <div class="row justify-content-center pb-0 pb-mb-5 pt-5 pt-md-0">
+          <div class="col-md-12 heading-section">
+            <!-- on submit, prevent the browser from refreshing the page. instead, run the custom submit() method defined below. -->
+            <h2 class="mb-4">Sign Up!</h2>
+            <form v-on:submit.prevent="submit()">
+              <ul>
+                <li class="error-messages" v-for="error in errors" v-bind:key="error">
+                  {{ error }}
+                </li>
+              </ul>
+              <div class="row">
+                <div class="col-md-12 tour-wrap">
+                  <div class="form-group">
+                    <label for="first-name">First Name:</label>
+                    <input id="first-name" type="text" class="form-control" v-model="firstName" autofocus />
+                  </div>
+                  <div class="form-group">
+                    <label>Last Name:</label>
+                    <input type="text" class="form-control" v-model="lastName" />
+                  </div>
+                  <div class="form-group">
+                    <label>Username:</label>
+                    <input type="text" class="form-control" v-model="username" />
+                  </div>
+                  <div class="form-group">
+                    <label>Email:</label>
+                    <input type="email" class="form-control" v-model="email" />
+                  </div>
+                  <div class="form-group">
+                    <label>Password:</label>
+                    <input type="password" class="form-control" v-model="password" />
+                  </div>
+                  <div class="form-group">
+                    <label>Password Confirmation:</label>
+                    <input type="password" class="form-control" v-model="passwordConfirmation" />
+                  </div>
+                  <div class="form-group mt-5">
+                    <input type="submit" class="btn btn-outline-success py-3 px-4" value="Sign Up!" />
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
       </div>
-      <div class="form-group">
-        <label>Last Name:</label>
-        <input type="text" v-model="lastName" />
-      </div>
-      <div class="form-group">
-        <label>Username:</label>
-        <input type="text" v-model="username" />
-      </div>
-      <div class="form-group">
-        <label>Email:</label>
-        <input type="email" v-model="email" />
-      </div>
-      <div class="form-group">
-        <label>Password:</label>
-        <input type="password" v-model="password" />
-      </div>
-      <div class="form-group">
-        <label>Password Confirmation:</label>
-        <input type="password" v-model="passwordConfirmation" />
-      </div>
-      <input type="submit" value="Sign Up!" />
-    </form>
+    </section>
   </div>
 </template>
 
 <style scoped>
 .error-messages {
   color: red;
+}
+form {
+  color: black;
+}
+.form-control {
+  width: 50%;
 }
 </style>
 

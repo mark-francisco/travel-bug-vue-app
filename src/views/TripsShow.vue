@@ -108,7 +108,7 @@
                 </tr>
               </tbody>
             </table>
-            <section class="ftco-section bg-light">
+            <section class="ftco-section bg-light ftco-no-pb">
               <div class="container">
                 <div class="row justify-content-center mb-2 pb-2">
                   <div class="col-md-7 heading-section text-center">
@@ -158,7 +158,8 @@
               </div>
             </section>
             <section class="ftco-section ftco-no-pt ftco-no-pb">
-              <div id="map" class="bg-white">Map under construction</div>
+              <button class="btn btn-outline-primary" v-on:click="setUpMap()">Show Map</button>
+              <div id="map">Map under construction</div>
             </section>
           </div>
         </div>
@@ -179,10 +180,21 @@ table {
   table-layout: fixed;
   width: 100%;
 }
+
+/* MapBox API */
+#map {
+  height: 500px;
+  width: auto;
+}
 </style>
 
 <script>
 import axios from "axios";
+// MapBox API (installed using npm)
+// you can use the require syntax, the import syntax, or the global comment syntax
+var mapboxgl = require("mapbox-gl/dist/mapbox-gl.js");
+// if you use the import syntax, the file path assumes "node_modules" as the root folder
+// import mapboxgl from "mapbox-gl/dist/mapbox-gl.js";
 
 export default {
   data: function () {
@@ -194,7 +206,28 @@ export default {
   created: function () {
     this.showTrip();
   },
+  mounted: function () {
+    this.setUpMap();
+  },
   methods: {
+    setUpMap: function () {
+      mapboxgl.accessToken = process.env.VUE_APP_MAPBOX_API_KEY;
+      let map = new mapboxgl.Map({
+        container: "map",
+        style: "mapbox://styles/mapbox/streets-v11",
+        // default the starting position to the first Stop on the Trip [lng, lat]
+        center: [this.currentTrip.stops[0].destination.lng, this.currentTrip.stops[0].destination.lat],
+        zoom: 3, // starting zoom
+      });
+      // create a new Marker
+      // console.log(this.currentTrip);
+      this.currentTrip.stops.forEach((stop) => {
+        // console.log(stop.destination);
+        new mapboxgl.Marker({ color: "red" }).setLngLat([stop.destination.lng, stop.destination.lat]).addTo(map);
+      });
+      // new mapboxgl.Marker().setLngLat([-9, 31]).addTo(map);
+    },
+
     showTrip: function () {
       axios
         .get(`/api/trips/${this.$route.params.id}`)

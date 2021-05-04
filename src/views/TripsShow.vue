@@ -158,8 +158,8 @@
               </div>
             </section>
             <section class="ftco-section ftco-no-pt ftco-no-pb">
-              <button class="btn btn-outline-primary" v-on:click="setUpMap()">Show Map</button>
-              <div id="map">Map under construction</div>
+              <button class="btn btn-outline-primary mb-1" v-on:click="setUpMap()">Show Map</button>
+              <div id="map"></div>
             </section>
           </div>
         </div>
@@ -207,7 +207,10 @@ export default {
     this.showTrip();
   },
   mounted: function () {
-    this.setUpMap();
+    // MapBox mounted function not working yet. only works on button click.
+    // if (this.currentTrip) {
+    //   this.setUpMap();
+    // }
   },
   methods: {
     setUpMap: function () {

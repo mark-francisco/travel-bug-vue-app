@@ -119,7 +119,9 @@
                   </div>
                 </div>
                 <div class="row d-flex">
-                  <div class="col-md-6 col-lg-4 d-flex" v-for="stop in currentTrip.stops" v-bind:key="stop.id">
+                  <!-- <div class="col-md-6 col-lg-4 d-flex" v-for="stop in currentTrip.stops" v-bind:key="stop.id"> -->
+                  <!-- 5/4/2021: sortedStops is a computed property so that currentTrip.stops in Vue is populated by order of start_date -->
+                  <div class="col-md-6 col-lg-4 d-flex" v-for="stop in sortedStops" v-bind:key="stop.id">
                     <div class="blog-entry justify-content-end">
                       <router-link v-bind:to="`/trips/${currentTrip.id}/stops/${stop.id}/edit`">
                         <a class="block-20" style="background-image: url('/ecoland-master/images/bg_3.jpg')"></a>
@@ -203,6 +205,13 @@ export default {
       errors: [],
     };
   },
+  computed: {
+    sortedStops: function () {
+      return this.currentTrip.stops.slice().sort(function (a, b) {
+        return new Date(a.start_date) - new Date(b.start_date);
+      });
+    },
+  },
   created: function () {
     this.showTrip();
   },
@@ -230,7 +239,6 @@ export default {
       });
       // new mapboxgl.Marker().setLngLat([-9, 31]).addTo(map);
     },
-
     showTrip: function () {
       axios
         .get(`/api/trips/${this.$route.params.id}`)

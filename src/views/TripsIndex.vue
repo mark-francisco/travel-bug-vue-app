@@ -6,7 +6,7 @@
           {{ error }}
         </li>
       </ul>
-      <div class="row justify-content-center pb-5 pt-5" v-if="trips.length > 0">
+      <div class="row justify-content-center pb-5 pt-5">
         <div class="col-md-12 heading-section text-center">
           <span class="subheading">Welcome!</span>
           <h2 class="mb-4">Adding a new Trip?</h2>

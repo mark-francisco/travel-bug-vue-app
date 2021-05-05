@@ -53,6 +53,7 @@
     <dialog id="users-index">
       <form method="dialog">
         <h1>Users:</h1>
+        <input type="submit" class="btn btn-outline-secondary mb-3" value="Close" />
         <div class="col-sm-12 day-wrap" v-for="user in this.users" v-bind:key="user.id">
           <li>
             {{ user.first_name }} {{ user.last_name }} -
@@ -60,7 +61,6 @@
             <button class="btn btn-outline-dark btn-sm float-right" v-on:click="setUser(user)">Select</button>
           </li>
         </div>
-        <input type="submit" class="btn btn-outline-secondary" value="Close" />
       </form>
     </dialog>
   </div>

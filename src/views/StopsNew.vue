@@ -48,6 +48,7 @@
     <dialog id="destinations-index">
       <form method="dialog">
         <h1>Destinations:</h1>
+        <input type="submit" class="btn btn-outline-secondary mb-3" value="Close" />
         <div class="col-sm-12 day-wrap" v-for="destination in sortedDestinations" v-bind:key="destination.id">
           <li>
             {{ destination.name }}, {{ destination.country }}
@@ -56,7 +57,6 @@
             </button>
           </li>
         </div>
-        <input type="submit" class="btn btn-outline-secondary" value="Close" />
       </form>
     </dialog>
   </div>

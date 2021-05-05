@@ -251,16 +251,18 @@ export default {
         });
     },
     destroyTrip: function (trip) {
-      axios
-        .delete(`/api/trips/${trip.id}`)
-        .then(() => {
-          // console.log(res);
-          this.$router.push("/trips");
-        })
-        .catch((err) => {
-          // console.log(err.response.data);
-          this.errors = err.response.data;
-        });
+      if (confirm("Are you sure you want to delete this Trip?")) {
+        axios
+          .delete(`/api/trips/${trip.id}`)
+          .then(() => {
+            // console.log(res);
+            this.$router.push("/trips");
+          })
+          .catch((err) => {
+            // console.log(err.response.data);
+            this.errors = err.response.data;
+          });
+      }
     },
   },
 };

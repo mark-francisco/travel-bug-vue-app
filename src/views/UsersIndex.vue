@@ -139,14 +139,16 @@ export default {
       let params = {
         collaborator_id: "",
       };
-      axios
-        .patch(`/api/trips/${trip.id}`, params)
-        .then(() => {
-          this.$router.push(`/trips/${trip.id}`);
-        })
-        .catch((err) => {
-          this.errors = err.response.data.errors;
-        });
+      if (confirm("Are you sure you want to remove your Trip's Collaborator?")) {
+        axios
+          .patch(`/api/trips/${trip.id}`, params)
+          .then(() => {
+            this.$router.push(`/trips/${trip.id}`);
+          })
+          .catch((err) => {
+            this.errors = err.response.data.errors;
+          });
+      }
     },
   },
 };

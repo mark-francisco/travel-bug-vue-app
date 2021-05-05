@@ -96,6 +96,7 @@ export default {
   computed: {
     sortedDestinations: function () {
       return this.destinations.slice().sort(function (a, b) {
+        // https://stackabuse.com/sorting-arrays-in-javascript/
         return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
       });
     },
@@ -142,15 +143,17 @@ export default {
         });
     },
     deleteStop: function () {
-      axios
-        .delete(`/api/stops/${this.stopToEdit.id}`)
-        .then(() => {
-          // console.log(res);
-          this.$router.push(`/trips/${this.$route.params.id}`);
-        })
-        .catch(() => {
-          this.errors = ["Unable to delete this Stop."];
-        });
+      if (confirm("Are you sure you want to remove this Stop?")) {
+        axios
+          .delete(`/api/stops/${this.stopToEdit.id}`)
+          .then(() => {
+            // console.log(res);
+            this.$router.push(`/trips/${this.$route.params.id}`);
+          })
+          .catch(() => {
+            this.errors = ["Unable to delete this Stop."];
+          });
+      }
     },
   },
 };

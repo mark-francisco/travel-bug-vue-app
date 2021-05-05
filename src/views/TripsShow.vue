@@ -226,18 +226,16 @@ export default {
       let map = new mapboxgl.Map({
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
-        // default the starting position to the first Stop on the Trip [lng, lat]
-        // center: [this.currentTrip.stops[0].destination.lng, this.currentTrip.stops[0].destination.lat],
-        center: [this.sortedStops[0].destination.lng, this.sortedStops[0].destination.lat],
         zoom: 3, // starting zoom
       });
       // create a new Marker
-      // console.log(this.currentTrip);
-      this.currentTrip.stops.forEach((stop) => {
-        // console.log(stop.destination);
-        new mapboxgl.Marker({ color: "red" }).setLngLat([stop.destination.lng, stop.destination.lat]).addTo(map);
-      });
-      // new mapboxgl.Marker().setLngLat([-9, 31]).addTo(map);
+      if (this.currentTrip.stops.length > 0) {
+        this.currentTrip.stops.forEach((stop) => {
+          new mapboxgl.Marker({ color: "red" }).setLngLat([stop.destination.lng, stop.destination.lat]).addTo(map);
+        });
+        // if the Trip has Stops, set starting position to the first chronological Stop [lng, lat]
+        map.setCenter([this.sortedStops[0].destination.lng, this.sortedStops[0].destination.lat]);
+      }
     },
     showTrip: function () {
       axios

@@ -228,7 +228,8 @@ export default {
         container: "map",
         style: "mapbox://styles/mapbox/streets-v11",
         // default the starting position to the first Stop on the Trip [lng, lat]
-        center: [this.currentTrip.stops[0].destination.lng, this.currentTrip.stops[0].destination.lat],
+        // center: [this.currentTrip.stops[0].destination.lng, this.currentTrip.stops[0].destination.lat],
+        center: [this.sortedStops[0].destination.lng, this.sortedStops[0].destination.lat],
         zoom: 3, // starting zoom
       });
       // create a new Marker

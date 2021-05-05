@@ -136,9 +136,8 @@
 
                           <h3 class="heading">
                             <p>
-                              Destination: {{ stop.destination.name }}, {{ stop.destination.country }} [{{
-                                stop.destination.lat
-                              }}, {{ stop.destination.lng }}]
+                              <strong>Destination:</strong>
+                              {{ stop.destination.name }}, {{ stop.destination.country }}
                             </p>
                           </h3>
                           <div class="d-flex align-items-center mt-4 meta">

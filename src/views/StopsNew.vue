@@ -48,7 +48,7 @@
     <dialog id="destinations-index">
       <form method="dialog">
         <h1>Destinations:</h1>
-        <div class="col-sm-12 day-wrap" v-for="destination in this.destinations" v-bind:key="destination.id">
+        <div class="col-sm-12 day-wrap" v-for="destination in sortedDestinations" v-bind:key="destination.id">
           <li>
             {{ destination.name }}, {{ destination.country }}
             <button class="btn btn-outline-dark btn-sm float-right" v-on:click="setDestination(destination)">
@@ -86,6 +86,13 @@ export default {
       destinations: [],
       errors: [],
     };
+  },
+  computed: {
+    sortedDestinations: function () {
+      return this.destinations.slice().sort(function (a, b) {
+        return a.name < b.name ? -1 : a.name > b.name ? 1 : 0;
+      });
+    },
   },
   methods: {
     createStop: function () {

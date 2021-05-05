@@ -229,13 +229,14 @@ export default {
         style: "mapbox://styles/mapbox/streets-v11",
         zoom: 3, // starting zoom
       });
-      // create a new Marker
       if (this.currentTrip.stops.length > 0) {
+        // if the Trip has Stops, set starting position to the first chronological Stop [lng, lat]
+        map.setCenter([this.sortedStops[0].destination.lng, this.sortedStops[0].destination.lat]);
+
+        // create a new Marker for each Stop
         this.currentTrip.stops.forEach((stop) => {
           new mapboxgl.Marker({ color: "red" }).setLngLat([stop.destination.lng, stop.destination.lat]).addTo(map);
         });
-        // if the Trip has Stops, set starting position to the first chronological Stop [lng, lat]
-        map.setCenter([this.sortedStops[0].destination.lng, this.sortedStops[0].destination.lat]);
       }
     },
     showTrip: function () {

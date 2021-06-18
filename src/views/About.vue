@@ -18,6 +18,7 @@
                 <br />
                 -That way, you have a rough guide that helps you remember what you decided on, what you want to do, and
                 other important details.
+                <br />
               </span>
             </p>
           </div>

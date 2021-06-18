@@ -171,11 +171,6 @@ a #travel-bug-brand:hover {
 
 .bg-light {
   background: #fff !important;
-  /* background: #ede4e3 !important; */
-  /* background: #ede7dc !important; */
-  /* background: #bdc3cb !important; */
-  /* background: #f2d0c1 !important; */
-  /* background: #e0e2e9 !important; */
 }
 .ftco-navbar-light {
   -webkit-box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.1);
@@ -184,7 +179,6 @@ a #travel-bug-brand:hover {
 
 .ftco-navbar-light.scrolled {
   background: #fff !important;
-  /* background: #bdc3cb !important; */
 }
 .ftco-navbar-light .navbar-toggler {
   color: rgba(0, 0, 0, 0.5) !important;

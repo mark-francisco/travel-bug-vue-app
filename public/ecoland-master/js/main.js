@@ -80,7 +80,7 @@
 
 	};
 
-	onePageClick();
+	// onePageClick();
 	
 
 	var carousel = function() {

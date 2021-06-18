@@ -95,7 +95,7 @@
                   <li>
                     <a href="#">
                       <span class="icon icon-envelope"></span>
-                      <span class="text">mark@example.com</span>
+                      <span class="text">github.com/mark-francisco</span>
                     </a>
                   </li>
                 </ul>

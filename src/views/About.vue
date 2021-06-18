@@ -19,7 +19,7 @@
                 -That way, you have a rough guide that helps you remember what you decided on, what you want to do, and
                 other important details.
                 <br />
-                -That's pretty much it. Pretty simple. Reach out to Mark if with any questions!
+                -That's pretty much it. Pretty simple. Reach out to Mark with any questions!
               </span>
             </p>
           </div>

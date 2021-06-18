@@ -80,6 +80,7 @@
 
 	};
 
+	// 6/18/2021: had to comment out this method out to prevent it from running. the jquery syntax utilized by the theme was interfering with the "hash" mode Vue router configuration (see /src/router/index.js). Used "hash" mode instead of "history" mode to handle for users who do a hard refresh on the Netlify site.
 	// onePageClick();
 	
 

@@ -93,7 +93,7 @@
                     <span class="text">Western Hemisphere, Planet Earth</span>
                   </li>
                   <li>
-                    <a href="https://github.com/mark-francisco">
+                    <a href="https://github.com/mark-francisco" target="_blank">
                       <span class="icon icon-envelope"></span>
                       <span class="text">github.com/mark-francisco</span>
                     </a>

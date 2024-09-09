@@ -90,7 +90,7 @@
                 <ul>
                   <li>
                     <span class="icon icon-map-marker"></span>
-                    <span class="text">Western Hemisphere, Planet Earth</span>
+                    <span class="text">Chicago, IL, USA</span>
                   </li>
                   <li>
                     <a href="https://github.com/mark-francisco" target="_blank">

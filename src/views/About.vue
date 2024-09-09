@@ -8,18 +8,19 @@
       <div class="overlay"></div>
       <div class="container">
         <div class="row no-gutters slider-text align-items-end justify-content-start">
-          <div class="col-md-8 pb-3">
+          <div class="col-md-8 py-3">
             <h1 class="mb-3 bread">About:</h1>
             <p class="breadcrumbs">
               <span class="about-text mr-2">
-                -Travel Bug is a place for you and others to collaboratively plan vacations.
-                <br />
-                -Multiple users can add and keep track of ideas and details related to a shared trip.
-                <br />
-                -That way, you have a rough guide that helps you remember what you decided on, what you want to do, and
-                other important details.
-                <br />
-                -That's pretty much it. Pretty simple. Reach out to Mark with any questions!
+                <ul>
+                  <li>Travel Bug is a place for you and others to collaboratively plan vacations.</li>
+                  <li>Multiple users can add and keep track of ideas and details related to a shared trip.</li>
+                  <li>
+                    That way, you have a rough guide that helps you remember what you decided on, what you want to do,
+                    and other important details.
+                  </li>
+                  <li>That's pretty much it. Pretty simple. Reach out with any questions!</li>
+                </ul>
               </span>
             </p>
           </div>
@@ -30,7 +31,7 @@
 </template>
 <style scoped>
 .about-text {
-  font-size: 22px;
+  font-size: 18px;
   text-align: left;
 }
 </style>

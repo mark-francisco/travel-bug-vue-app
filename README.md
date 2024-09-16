@@ -1,38 +1,28 @@
 # travel-bug-vue-app
 
-This repo contains the front-end code for Travel Bug.
+This repo contains the Vue.js front-end for Travel Bug.
 
-It is deployed at https://app.netlify.com/sites/travel-bug-vue-app
-
-The back-end is built in Ruby on Rails. It lives in this repo:
+The back-end is built on Ruby on Rails. See this repo:
 https://github.com/mark-francisco/travel-bug
+
+The full app can be viewed here: https://travel-bug-vue-app.netlify.app
 
 # To debug this repo locally, use these commands:
 
-## Project setup
+## Install project dependencies
 
 ```
 npm install
 ```
 
-### Compiles and hot-reloads for development
+### Start local development server
 
 ```
 npm run serve
 ```
 
-### Compiles and minifies for production
+### Build the project for production
 
 ```
 npm run build
 ```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).
